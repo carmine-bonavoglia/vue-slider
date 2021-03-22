@@ -20,6 +20,12 @@ var app = new Vue({
   },
 
   created(){
+    
+    self.addEventListener('keydown', function(e){
+      app.keyCode = e.key;
+      app.keyDown(e);
+    });
+
     this.intervallo = setInterval(this.nextPhoto, 3000);
   },
 
@@ -44,6 +50,14 @@ var app = new Vue({
     changePhoto(dot){
       this.counter = dot;
       clearInterval(this.intervallo);
+    },
+
+    keyDown(e){
+      if(e.keyCode == 39){
+        this.nextPhoto();
+      } else if(e.keyCode == 37){
+        this.prevPhoto();
+      }
     }
 
   }
