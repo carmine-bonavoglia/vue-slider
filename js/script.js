@@ -9,7 +9,8 @@ var app = new Vue({
       'img/4.jpg'
     ]
   },
-  methods: {
+  methods:{
+
     nextPhoto(){
       if(this.counter == this.immagini.length - 1){
         this.counter = 0;
@@ -17,11 +18,18 @@ var app = new Vue({
         this.counter++;
       }
     },
+
     prevPhoto(){
-      this.counter--;
       if(this.counter < 1){
         this.counter = this.immagini.length - 1;
+      } else {
+        this.counter--;
       }
+    },
+
+    changePhoto(dot){
+      this.counter = dot;
     }
+
   }
 });
