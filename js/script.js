@@ -1,5 +1,6 @@
 var app = new Vue({
   el: '#app',
+  
   data: {
     counter: 0,
     immagini: [
@@ -7,8 +8,14 @@ var app = new Vue({
       'img/2.jpg',
       'img/3.jpg',
       'img/4.jpg'
-    ]
+    ],
+    intervallo: ''
   },
+
+  created(){
+    this.intervallo = setInterval(this.nextPhoto, 3000);
+  },
+
   methods:{
 
     nextPhoto(){
@@ -29,6 +36,7 @@ var app = new Vue({
 
     changePhoto(dot){
       this.counter = dot;
+      clearInterval(this.intervallo);
     }
 
   }
